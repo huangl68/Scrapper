@@ -6,9 +6,13 @@ from selenium.common.exceptions import NoSuchElementException
 from parse import parse
 from datetime import date
 import pymongo
+from selenium.webdriver.chrome.options import Options
+
+chrome_options = Options()
+chrome_options.add_argument("--headless")
 
 DRIVER_PATH = 'driver/chromedriver'
-driver = webdriver.Chrome(executable_path=DRIVER_PATH)
+driver = webdriver.Chrome(executable_path=DRIVER_PATH, options=chrome_options)
 scrapping_done = False
 
 client = pymongo.MongoClient("mongodb://localhost:27017/")
